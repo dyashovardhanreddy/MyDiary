@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'website/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'website/footer_style.css' %}">
+    <title>
+      {% block title %}
+      {% endblock %}
+    </title>
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'website-home' %}">Home</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'website-diary' %}">Diary</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-user-circle"></i> {{user.username}}
+                  </a>
+                  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    
+                  </button> -->
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-id-badge"></i>  Profile</a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> Support</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                  </div>
+                </div>
+                
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Sign In</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+     <main role="main" class="container">
+        <div class="row">
+        <div class="col-md-12">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <div>
+      <hr>
+      <div class="footer">
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h1 class="logo-text">
+              <span>My</span>Diary
+            </h1>
+            <p style="color: white;">
+              I am building this website to improve my development sills and to get grip on django
+            </p>
+            <div class="contact mt-4">
+              <span style="color:white;"><i class="fas fa-phone">&nbsp; +91 444-444-444</i></span>
+              <span style="color:white"><i class="fas fa-envelope">&nbsp; emailme@gmail.com</i></span>
+            </div>
+            <div class="socials my-3">
+              <a href="" class="mx-1"><i class="fab fa-facebook"></i></a>
+              <a href="" class="mx-1"><i class="fab fa-instagram"></i></a>
+              <a href="" class="mx-1"><i class="fab fa-twitter" ></i></a>
+            </div>
+          </div>
+          <div class="footer-section links">
+            <h2>Quick Links</h2><br>
+            <ul>
+              <li><a href="{% url 'website-diary' %}">Diary</a></li>
+            </ul>
+          </div>
+          <div class="footer-section contact-form">
+              <h2>Contact Us</h2><br>
+              <form action="" method="post">
+                <input type="email" name="email" class="text-input contact-input" placeholder="Your email address..."><br>
+                <textarea name="message" class="text-input contact-input" placeholder="Your message..."></textarea><br>
+                <button type="submit" class="btn btn-big" ><i class="fas fa-envelope" ></i>Send</button>
+              </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; Designed by Yasho Vardhan
+        </div>
+      </div>
+    </div>
+  <!-- footer -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b15f1b8144.js" crossorigin="anonymous"></script>
+</body>
+</html>

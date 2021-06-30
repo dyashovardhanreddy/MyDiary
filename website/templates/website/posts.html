@@ -1,0 +1,16 @@
+{% extends "website/base.html" %}
+{% block title %}
+Posts
+{% endblock %}
+{% block content %}
+	<article class="media content-section">
+	  <div class="media-body">
+	    <div class="article-metadata">
+	      <a class="mr-2" href="#">{{ post.author }}</a>
+	    </div>
+	    <img src="{{ post.image }}">
+	    <p class="article-content">{{ post.caption }}</p>
+	    <small class="text-muted">{{ post.date_posted }}</small>
+	  </div>
+	</article>
+{% endblock %}

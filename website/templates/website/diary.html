@@ -1,0 +1,24 @@
+{% extends "website/base.html" %}
+{% block title %}
+Diary
+{% endblock %}
+{% block content %}
+	<div class="header">
+		<h1 style="font-family: 'Courier New', monospace" class="justify-content-start">My Diary</h1>
+	</div>
+	<hr>
+	<div class='row'>
+		{% for diary in diaries %}
+			<div class="col-md-4 col-lg-4">
+	            <div class="card" style="width: 18rem;">
+	                <img src="{{ diary.image.url }}" class="card-img-top" alt="...">
+	                <div class="card-body">
+	                  <h5 class="card-title" style="font-family: 'Times New Roman', Times, serif;">{{ diary.title }}</h5>
+	                  <h6 class="card-text mb-3"><i class="far fa-calendar-alt"></i> {{ diary.date }}</h6>
+	                  <a class="btn btn-dark" href="{% url 'website-read-diary' diary_id=diary.id  %}"><span style="color:white;">Read</span></a>
+	                </div>
+	              </div>
+	          </div>
+		{% endfor %}
+	</div>
+{% endblock %}

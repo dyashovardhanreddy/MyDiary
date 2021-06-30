@@ -1,0 +1,15 @@
+{% extends "website/base.html" %}
+{% block title %}
+Diary
+{% endblock %}
+{% block content %}
+	<div class="header-section">
+		<h1 style = "font-family:courier,arial,ComicSans;font-size: 40px;">{{ diary.title }}</h1>
+		<hr>
+	</div>
+	<div class="bottom-section">
+		<center class="my-5"><img src="{{ diary.image.url }}" width="600" height="500"></center>
+		<p style = "font-family:courier,arial,Courier New;font-size: 20px;">{{ diary.content }}</p>
+		<small><i class="far fa-calendar-alt"></i> {{ diary.date }}</small>
+	</div>
+{% endblock %}
